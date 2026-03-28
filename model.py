@@ -8,11 +8,19 @@ import numpy as np
 import re
 import string
 import nltk
-nltk.download('stopwords')
-nltk.download('punkt')
-nltk.download('averaged_perceptron_tagger_eng')
-nltk.download('wordnet')
-nltk.download('omw-1.4')
+# Ensuring required NLTK resources are available
+for resource in [
+    "stopwords",
+    "punkt",
+    "punkt_tab",  # new addition
+    "averaged_perceptron_tagger_eng",
+    "wordnet",
+    "omw-1.4"
+]:
+    try:
+        nltk.data.find(resource)
+    except LookupError:
+        nltk.download(resource)
 
 
 class SentimentRecommenderModel:
@@ -35,8 +43,7 @@ class SentimentRecommenderModel:
             SentimentRecommenderModel.ROOT_PATH + SentimentRecommenderModel.CLEANED_DATA, 'rb'))
         self.lemmatizer = WordNetLemmatizer()
         self.stop_words = set(stopwords.words('english'))
-        print("Is 'good' in vocabulary?:", "good" in self.vectorizer.vocabulary_)
-        print("Vocabulary size:", len(self.vectorizer.vocabulary_))
+        
 
     """function to get the top product 20 recommendations for the user"""
 
@@ -53,9 +60,7 @@ class SentimentRecommenderModel:
                 self.user_final_rating.loc[user].sort_values(ascending=False)[0:20].index)
             filtered_data = self.cleaned_data[self.cleaned_data.id.isin(
                 recommendations)]
-            # preprocess the text before tranforming and predicting
-            #filtered_data["reviews_text_cleaned"] = filtered_data["reviews_text"].apply(lambda x: self.preprocess_text(x))
-            # transfor the input data using saved tf-idf vectorizer
+            # transform the input data using saved tf-idf vectorizer
             X = self.vectorizer.transform(
                 filtered_data["reviews_text_cleaned"].values.astype(str))
             filtered_data["predicted_sentiment"] = self.model.predict(X)
