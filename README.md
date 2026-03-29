@@ -13,14 +13,15 @@ github link: https://github.com/ShaktiKP/SentimentBasedProductRecommendation#
 Heroku (Application is Live): https://sentibased-product-recommender-6fa247d1801d.herokuapp.com/
 
 Built with :
-Python 3.10.13
-Flask 3.1.3
-nltk 3.9.1
-numpy 2.2.6
-pandas 2.2.2
-gunicorn 25.2.0
-scikit-learn 1.7.2
-xgboost 3.2.0
+
+  Python 3.10.13
+  Flask 3.1.3
+  nltk 3.9.1
+  numpy 2.2.6
+  pandas 2.2.2
+  gunicorn 25.2.0
+  scikit-learn 1.7.2
+  xgboost 3.2.0
 
 
 Solution Approach :
