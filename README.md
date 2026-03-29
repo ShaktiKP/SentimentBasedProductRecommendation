@@ -14,19 +14,19 @@ Heroku (Application is Live): https://sentibased-product-recommender-6fa247d1801
 
 Built with :
 
-  Python 3.10.13
-  Flask 3.1.3
-  nltk 3.9.1
-  numpy 2.2.6
-  pandas 2.2.2
-  gunicorn 25.2.0
-  scikit-learn 1.7.2
-  xgboost 3.2.0
+• Python 3.10.13    
+• Flask 3.1.3  
+• nltk 3.9.1  
+• numpy 2.2.6  
+• pandas 2.2.2  
+• gunicorn 25.2.0  
+• scikit-learn 1.7.2  
+• xgboost 3.2.0  
 
 
 Solution Approach :
 
-• Dataset and Attribute description are available under dataset\ folder
+• Dataset and Attribute description are available under dataset\ folder  
 • Data Cleaning, Visualization and Text Preprocessing (NLP) are applied on the dataset. TF-IDF Vectorizer is used to vectorize the textual data(review_title+review_text). It measures the relative importance of the word wtih respect to other documents
 • Dataset suffers from Class Imbalance Issue and SMOTE Oversampling technique is used before applying the model
 • Machine Learning Classification Models (Logistic Regression, Naive Baiyes, Tree Algorithms : (Decision Tree, Random Forrest, xgboost) are applied on the vectorized data and the target column (user_sentiment). The objective of this ML model is to classify the sentiment to positive(1) or negative(0). Best Model is selected based on the various ML classification metrics (Accuracy, Precision, Recall, F1 Score, AUC). xgboost is selected to be a better model based on the evaluation metrics.
